@@ -3,6 +3,8 @@
 import urllib.request
 import zipfile
 import os
+import winshell
+from win32com.client import Dispatch
 
 # Say hi
 
@@ -45,4 +47,18 @@ print("Tablet Driver Path:" + os.getcwd() + "\\Driver")
 print(".Net 5.0 Framework Path:" + os.getcwd() + "\\.Net_5.0_Framework")
 os.remove(os.getcwd() + "\\dotnet-sdk-5.0.403-win-x64.zip")
 os.remove(os.getcwd() + "\\OpenTabletDriver.win-x64.zip")
+
+#adding desktop shortcut
+
+desktop = winshell.desktop()
+path = os.path.join(desktop, "Open Tablet Driver.lnk")
+target = os.getcwd() + "\\driver\\OpenTabletDriver.UX.Wpf.exe"
+wDir = os.getcwd() + "\\driver"
+icon = os.getcwd() + "\\driver\\OpenTabletDriver.UX.Wpf.exe"
+shell = Dispatch('WScript.Shell')
+shortcut = shell.CreateShortCut(path)
+shortcut.Targetpath = target
+shortcut.WorkingDirectory = wDir
+shortcut.IconLocation = icon
+shortcut.save()
 input("Press the Enter key to exit.")
