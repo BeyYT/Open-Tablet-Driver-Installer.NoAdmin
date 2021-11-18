@@ -11,6 +11,8 @@
 ### Requirements:
 - Python 3.6
 - Py2Exe ```pip install py2exe```
+- winshell ```pip install winshell```
+- win32com ```pip install pywin32```
 
 Run setup.py ```python setup.py py2exe```
 
